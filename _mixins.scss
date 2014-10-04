@@ -1,0 +1,37 @@
+@mixin brand-faces() {
+ @if function-exists('current-time') {
+  $cache: '?'+#{current-time()};
+ }
+
+ @each $family in $brand-faces {
+  $face-name: quote(#{nth($family, 1)});
+  $face: nth($family, 2);
+  @each $option in $face {
+   @font-face {
+    font-family: to-lower-case($face-name);
+    src: url(nth($option, 2) + '.eot'+$cache);
+    src: url(nth($option, 2) + '.eot'+$cache+'#iefix') format('embedded-opentype'),
+    url(nth($option, 2) + '.woff'+$cache) format('woff'),
+    url(nth($option, 2) + '.ttf'+$cache) format('truetype'),
+    url(nth($option, 2) + '.svg'+$cache) format('svg');
+    font-weight: nth($option, 1);
+    @if length($option) == 3 {
+
+     font-style: nth($option, 3);
+
+    } @else {
+     font-style: 'normal';
+    }
+
+   }
+  }
+  .brand-face-#{nth($sequentials,index($brand-faces, $family))} {
+   font-family: to-lower-case($face-name);
+  }
+ }
+
+}
+
+@if $brand-faces != false {
+ @include brand-faces();
+}

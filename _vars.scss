@@ -1,0 +1,17 @@
+/* Variable Overrides */
+
+
+// use whatever sequentials you want...
+$sequentials: 'i', 'ii', 'iii', 'iv';
+
+$brand-faces: 'Nexa' (
+    ("nexa/nexa_regular-webfont", normal),
+    ("nexa/nexa_regular-italics-webfont", normal, italic),
+    ("nexa/nexa_bold-webfont", bold),
+    ("nexa/nexa_black-webfont", bolder),
+),
+'TinFish' (
+      ("font/tin-fish", bold),
+      ("font/tin-fish", lighter),
+      ("font/tin-fish", normal),
+);
